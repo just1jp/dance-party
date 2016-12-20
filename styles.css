@@ -1,29 +1,177 @@
-body, html{
-  height:100%;
+/*==================================*/
+/*============ FONT =============*/
+/*==================================*/
+
+@font-face {
+  font-family: Amatic-Bold;
+  src: url('fonts/Amatic-Bold.ttf');
 }
-body{
-  margin: 0px;
-  background-color:#444;
-  font-size: 18px;
+@font-face {
+  font-family: AmaticSC-Regular;
+  src: url('fonts/AmaticSC-Regular.ttf');
 }
-body, a:link, a:visited, a:active{
-  color: lightblue;
+
+/*==================================*/
+/*============ Styling =============*/
+/*==================================*/
+
+#wallpaper img {
+  width: 125vw;
+  height: auto;
+  min-width: 1125px;
+  min-height: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
-.title, .addDancerButton{
-  padding:5px 12px;
-  float:right;
+
+.header, .sub-header {
+  background-color: black;
+  padding: 15px 0;
+  position: relative;
+  display: block;
 }
-.topbar{
-  height:32px;
-  background-color: #555;
+.header h1 {
+  font-family: Amatic-Bold;
+  font-size: 40px;
+  letter-spacing: 10px;
+  color: white;
+  margin: 0;
 }
-.title{
-  background-color: #777;
+.sub-header {
+  background-color: yellow;
 }
-.dancer{
-  border-radius:10px;
-  position:absolute;
+.add-dancers, .action-dancers {
+  display: inline-block;
 }
-.crazyDancer{
-  border-radius: 50%!important;
+.add-dancers li, .action-dancers li {
+  display: inline;
+  padding: 5px 10px;
+  margin-left: 10px;
+  border-radius: 6px;
+  font-size: 20px;
+  vertical-align: middle;
+}
+.btn {
+  display: inline-block;
+  padding: 8px 0;
+  border-radius: 10px;
+  border: 1px solid #FF3DC4;
+  background-color: rgba(0,0,0,0);
+  color: #FF3DC4;
+  font-size: 14px;
+  vertical-align: middle;
+  width: 10%;
+  text-align: center;
+}
+.btn:hover,
+.btn:focus {
+  background-color: #FF3DC4;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cta {
+  color: #FF3DC4;
+}
+.action-dancers .cta {
+  margin-left: 30px;
+}
+
+
+
+/*==================================*/
+/*============ Spacing =============*/
+/*==================================*/
+
+.pt5 {padding-top: 5px;}
+.pt10 {padding-top: 10px;}
+.pt15 {padding-top: 15px;}
+.pt20 {padding-top: 20px;}
+.pt5 {padding-top: 25px;}
+.pt30 {padding-top: 30px;}
+.pt35 {padding-top: 35px;}
+.pt40 {padding-top: 40px;}
+.pt45 {padding-top: 45px;}
+.pt50 {padding-top: 50px;}
+.pt55 {padding-top: 55px;}
+.pt60 {padding-top: 60px;}
+.pt65 {padding-top: 65px;}
+.pt70 {padding-top: 70px;}
+.pt75 {padding-top: 75px;}
+.pt80 {padding-top: 80px;}
+.pb5 {padding-bottom: 5px;}
+.pb10 {padding-bottom: 10px;}
+.pb15 {padding-bottom: 15px;}
+.pb20 {padding-bottom: 20px;}
+.pb5 {padding-bottom: 25px;}
+.pb30 {padding-bottom: 30px;}
+.pb35 {padding-bottom: 35px;}
+.pb40 {padding-bottom: 40px;}
+.pb45 {padding-bottom: 45px;}
+.pb50 {padding-bottom: 50px;}
+.pb55 {padding-bottom: 55px;}
+.pb60 {padding-bottom: 60px;}
+.pb65 {padding-bottom: 65px;}
+.pb70 {padding-bottom: 70px;}
+.pb75 {padding-bottom: 75px;}
+.pb80 {padding-bottom: 80px;}
+.mt5 {margin-top: 5px;}
+.mt10 {margin-top: 10px;}
+.mt15 {margin-top: 15px;}
+.mt20 {margin-top: 20px;}
+.mt5 {margin-top: 25px;}
+.mt30 {margin-top: 30px;}
+.mt35 {margin-top: 35px;}
+.mt40 {margin-top: 40px;}
+.mt45 {margin-top: 45px;}
+.mt50 {margin-top: 50px;}
+.mt55 {margin-top: 55px;}
+.mt60 {margin-top: 60px;}
+.mt65 {margin-top: 65px;}
+.mt70 {margin-top: 70px;}
+.mt75 {margin-top: 75px;}
+.mt80 {margin-top: 80px;}
+.mb5 {margin-bottom: 5px;}
+.mb10 {margin-bottom: 10px;}
+.mb15 {margin-bottom: 15px;}
+.mb20 {margin-bottom: 20px;}
+.mb25 {margin-bottom: 25px;}
+.mb30 {margin-bottom: 30px;}
+.mb35 {margin-bottom: 35px;}
+.mb40 {margin-bottom: 40px;}
+.mb45 {margin-bottom: 45px;}
+.mb50 {margin-bottom: 50px;}
+.mb55 {margin-bottom: 55px;}
+.mb60 {margin-bottom: 60px;}
+.mb65 {margin-bottom: 65px;}
+.mb70 {margin-bottom: 70px;}
+.mb75 {margin-bottom: 75px;}
+.mb80 {margin-bottom: 80px;}
+
+
+/*==================================*/
+/*============  RESET  =============*/ 
+/*==================================*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: Amatic-Bold;
+  letter-spacing: 5px;
+  vertical-align: baseline;
 }
