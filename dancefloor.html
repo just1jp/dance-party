@@ -4,6 +4,9 @@
     <title>Holiday Dance Party</title>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
     <script src="lib/jquery.js"></script>
+    <script src="src/dancer.js"></script>
+    <script src="src/drunkDancer.js"></script>
+    <script src="src/nervousDancer.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
@@ -17,8 +20,8 @@
     <div class="sub-header text-center">
       <ul class="add-dancers">
         <li class="cta">Add</li>
-        <li class="btn">Nervous Dancer</li>
-        <li class="btn">Drunk Dancer</li>
+        <li data-dancer-type='NervousDancer' class="btn">Nervous Dancer</li>
+        <li data-dancer-type='DrunkDancer' class="btn">Drunk Dancer</li>
       </ul>
       <ul class="action-dancers">
         <li class="cta">Make Dancers</li>
@@ -26,12 +29,7 @@
         <li class="btn">Partner Up</li>
       </ul>
     </div>
-
-    <!-- <div class="topbar">
-      <span class="title">object dance party</span>
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="BlinkyDancer">add a blinky dancer</a>
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="CrazyDancer">add a crazy dancer</a>
-    </div> -->
-    <script src="src/init.js"></script>
+    
+    <script src="src/app.js"></script>
   </body>
 </html>

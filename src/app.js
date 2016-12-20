@@ -1,5 +1,18 @@
 $(document).ready(function() {
 
+  window.dancers = [];
+
+  $('.btn').on('click', function() {
+    var dancerTypeString = $(this).data('dancer-type');
+    var dancerType = window[dancerTypeString];
+    // Create new dancer instance
+    var dancer = new dancerType();
+    // Push new dancer to global dancers array
+    dancers.push(dancer);
+    // Add new dancer to DOM
+    $('body').append(dancer.$node);
+  });
+
   
 
 
@@ -19,16 +32,7 @@ $(document).ready(function() {
 
 
 
-
-
-
-
-
-
-
-
-
-  // OLD CIRCLES VERSION
+  // // OLD CIRCLES VERSION
 
   // window.dancers = [];
 
@@ -41,10 +45,10 @@ $(document).ready(function() {
   //    * will call the function to make the dancer.
   //    */
 
-  //    dancerMakerFunctionName is a string which must match
-  //    * one of the dancer maker functions available in global scope.
-  //    * A new object of the given type will be created and added
-  //    * to the stage.
+  //    // dancerMakerFunctionName is a string which must match
+  //    // * one of the dancer maker functions available in global scope.
+  //    // * A new object of the given type will be created and added
+  //    // * to the stage.
      
   //   var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
 
@@ -59,5 +63,7 @@ $(document).ready(function() {
   //   );
   //   $('body').append(dancer.$node);
   // });
+
+
 });
 
