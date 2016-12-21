@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   window.dancers = [];
 
-  $('.btn').on('click', function() {
+  $('.btn-create').on('click', function() {
     var dancerTypeString = $(this).data('dancer-type');
     var dancerType = window[dancerTypeString];
     // Create new dancer instance
@@ -13,7 +13,87 @@ $(document).ready(function() {
     $('body').append(dancer.$node);
   });
 
-  
+  $('body').on('click', '.dancer', function() {
+    console.log('clicked');
+    // Retrieve object for the dancer that is clicked
+    var dancerNumb = $(this).data('dancer-num');
+    for (var i = 0; i < window.dancers.length; i++) {
+      if (window.dancers[i]['number'] === dancerNumb) {
+        var clickedObj = window.dancers[i];
+      }
+    }
+    console.log(clickedObj);
+    // Set start coordinate to create lines from
+    var centerX = ($('body').width() / 2) * 0.9;
+    var centerY = ($('body').height() / 2) * 0.6;
+
+    // Move dancer to middle of dance floor
+    centerY -= 100;
+    clickedObj.updatePosition(centerX, centerY);
+    clickedObj.$node.addClass('centered');
+  });
+
+  $('body').on('click', '.centered', function() {
+    console.log('center dancer clicked');
+    // Retrieve object for the dancer that is clicked
+    var dancerNumb = $(this).data('dancer-num');
+    for (var i = 0; i < window.dancers.length; i++) {
+      if (window.dancers[i]['number'] === dancerNumb) {
+        var clickedObj = window.dancers[i];
+      }
+    }
+    console.log(clickedObj);    
+    clickedObj.updatePosition(clickedObj.left, clickedObj.bottom);
+    clickedObj.$node.removeClass('centered');
+  });
+
+  $('.btn[data-action="lineUp"]').on('click', function() {
+    // Get an array of dancers
+    var dancers = window.dancers;
+    // Set start coordinate to create lines from
+    var centerX = ($('body').width() / 2) * 0.9;
+    var centerY = ($('body').height() / 2) * 0.6;
+
+    // Iterate over each dancer in the array
+    for (var i = 0; i < dancers.length; i++) {
+      console.log(dancers.indexOf(dancers[i]));
+      // If have gone through half of dancers, send next dancer to other side by resetting centerpoint
+      if (dancers.indexOf(dancers[i]) === Math.floor(dancers.length / 2)) {
+        centerX = ($('body').width() / 2) * 1.1;
+        centerY = ($('body').height() / 2) * 0.6;
+        console.log('resetting');
+      }
+      if (dancers.indexOf(dancers[i]) < Math.floor(dancers.length / 2)) {
+        // Create step in the line for first half of dancers
+        centerX -= 30;
+        centerY -= 30;
+        console.log('line1');
+      } else {
+        // Create step in the line for second half of dancers
+        centerX += 30;
+        centerY -= 30;
+        console.log('line2');
+      }
+      // Iteratively add new coordinate properties to each element
+      dancers[i].left = centerX;
+      dancers[i].bottom = centerY;
+      // Call update position method on the dancer
+      dancers[i].updatePosition(dancers[i].left, dancers[i].bottom);
+    }
+  });
+
+  $('.btn[data-action="partnerUp"]').on('click', function() {
+    // Get array of dancers
+    var dancers = window.dancers;
+    // Iterate over each dancer
+    for (var i = 0; i < dancers.length - 1; i += 2) { 
+      // Match coordinates with next dancer
+      dancers[i].left = dancers[i + 1].left + 30;
+      dancers[i].bottom = dancers[i + 1].bottom;
+      // Update coordinate of pair
+      dancers[i].updatePosition(dancers[i].left, dancers[i].bottom); 
+    }
+  });
 
 
 
@@ -25,44 +105,6 @@ $(document).ready(function() {
 
 
 
-
-
-
-
-
-
-
-  // // OLD CIRCLES VERSION
-
-  // window.dancers = [];
-
-  // $('.addDancerButton').on('click', function(event) {
-  //   /* This function sets up the click handlers for the create-dancer
-  //    * buttons on dancefloor.html. You should only need to make one small change to it.
-  //    * As long as the "data-dancer-maker-function-name" attribute of a
-  //    * class="addDancerButton" DOM node matches one of the names of the
-  //    * maker functions available in the global scope, clicking that node
-  //    * will call the function to make the dancer.
-  //    */
-
-  //    // dancerMakerFunctionName is a string which must match
-  //    // * one of the dancer maker functions available in global scope.
-  //    // * A new object of the given type will be created and added
-  //    // * to the stage.
-     
-  //   var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
-
-  //   // get the maker function for the kind of dancer we're supposed to make
-  //   var dancerMakerFunction = window[dancerMakerFunctionName];
-
-  //   // make a dancer with a random position
-  //   var dancer = new dancerMakerFunction(
-  //     $('body').height() * Math.random(),
-  //     $('body').width() * Math.random(),
-  //     Math.random() * 1000
-  //   );
-  //   $('body').append(dancer.$node);
-  // });
 
 
 });

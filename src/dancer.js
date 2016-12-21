@@ -1,36 +1,58 @@
+var dancerNum = 0;
+
 // Create superclass of Dancers
 var Dancer = function() {
   var randomDancer = Math.floor(6 * Math.random()) + 1;
-  this.$node = $('<img src="img/dancer' + randomDancer + '.gif"' + 'class="dancer"></img>');
+  dancerNum++;
+  this.number = dancerNum;
+  this.$node = $('<img src="img/dancer' + randomDancer + '.gif" data-dancer-num="' + this.number + '" class="dancer"></img>');
   this.setPosition();
-
 };
 
-// Add position for the dancer
 Dancer.prototype.setPosition = function() {
   // Add position properties on the Dancer superclass
   this.bottom = Math.round($('body').height() * Math.random() * 0.25);
   this.left = Math.round($('body').width() * Math.random());
+  this.updatePosition(this.left, this.bottom);
+};
+
+Dancer.prototype.updatePosition = function(x, y) {
   var position = {
-    bottom: this.bottom,
-    left: this.left
+    bottom: y,
+    left: x
   };
   this.$node.css(position);
 };
 
-// Allow dancers to move
-Dancer.prototype.move = function(x, y) {
-  setTimeout(this.move.bind(this), 10);
-  
-  this.$node.toggle();
-  this.left = this.left + x;
-  this.bottom = this.bottom + y;
-  var position = {
-    bottom: this.bottom,
-    left: this.left
-  };
-  this.$node.css(position);
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
